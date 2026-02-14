@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Mi corazón es tuyo ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #2a004a, #4b0082, #8a2be2);
+      color: white;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px; /* un poco más pequeño en móvil */
+      animation: float 14s linear infinite; /* más lento para no saturar */
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      8%   { opacity: 0.7; }
+      92%  { opacity: 0.7; }
+      100% { transform: translateY(-150px) rotate(450deg); opacity: 0; }
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 14rem 1rem;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .heart-emoji {
+      font-size: 7rem; /* ajustado para móvil */
+      animation: latir 2.5s ease-in-out infinite;
+      margin: 1rem 0 1.2rem 0;
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.08); }
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0.4rem 0 0.8rem 0;
+      color: #ff69b4;
+      text-shadow: 0 0 12px #ff1493;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0.7rem 0;
+      max-width: 95%;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      margin: 0.8rem 0;
+      width: 100%;
+    }
+
+    .gallery img {
+      width: 42vw;
+      max-width: 160px;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(25px) scale(0.92);
+      transition: all 0.7s ease-out;
+      border: 2px solid rgba(255,105,180,0.3);
+    }
+
+    .gallery img.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation: latirFotos 5s ease-in-out infinite, glowPulse 5s ease-in-out infinite;
+    }
+
+    @keyframes latirFotos {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.04); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 5px 15px rgba(0,0,0,0.4), 0 0 15px rgba(255,105,180,0.2); }
+      50%      { box-shadow: 0 8px 25px rgba(0,0,0,0.45), 0 0 35px rgba(255,105,180,0.6); }
+    }
+
+    .gallery img:hover,
+    .gallery img:active {
+      transform: scale(1.06);
+      box-shadow: 0 10px 25px rgba(255,105,180,0.5);
+      border-color: #ff69b4;
+    }
+
+    .extra-text {
+      margin: 1.5rem 0 2.5rem 0;
+      padding: 0 0.8rem;
+      max-width: 95%;
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.93;
+      color: #ffe4e1;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 0.93; transform: translateY(0); }
+    }
+
+    .music-btn {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255,105,180,0.5);
+      transition: all 0.3s ease;
+      z-index: 100;
+      min-width: 85%;
+      max-width: 340px;
+      touch-action: manipulation;
+    }
+
+    .music-btn:hover,
+    .music-btn:active {
+      transform: translateX(-50%) scale(1.07);
+      box-shadow: 0 12px 30px rgba(255,20,147,0.7);
+    }
+
+    /* Botón "5 razones" */
+    .reasons-btn {
+      margin: 2rem 0 5rem 0;
+      padding: 1.3rem 2.8rem;
+      font-size: 1.2rem;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255,105,180,0.6);
+      transition: all 0.3s ease;
+      animation: pulseBtn 2.5s infinite;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      min-width: 85%;
+      max-width: 340px;
+    }
+
+    .reasons-btn:hover {
+      transform: translateY(-6px) scale(1.07);
+      box-shadow: 0 15px 35px rgba(255,20,147,0.8);
+    }
+
+    @keyframes pulseBtn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    /* Canvas para confeti */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @media (max-width: 480px) {
+      .heart-emoji { font-size: 6rem; margin: 0.8rem 0 1rem 0; }
+      h1 { font-size: 1.7rem; }
+      p, .extra-text { font-size: 0.95rem; line-height: 1.45; }
+      .gallery img { width: 40vw; max-width: 140px; }
+      .music-btn, .reasons-btn { font-size: 1rem; padding: 1rem 2rem; min-width: 90%; }
+      .content { padding: 1.2rem 0.8rem 14rem 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Confeti giratorio bonito -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="content">
+    <div class="heart-emoji">💖</div>
+    <h1>¡Te amo muchísimo, mi princesa!</h1>
+    <p>Gracias por abrir mi corazón...<br>Mira estas fotos que me recuerdan lo especial que eres ❤️</p>
+
+    <div class="gallery">
+      <img src="foto1.jpg" alt="Momento especial 1" loading="lazy">
+      <img src="foto2.jpg" alt="Momento especial 2" loading="lazy">
+      <img src="foto3.jpg" alt="Momento especial 3" loading="lazy">
+    </div>
+
+    <div class="extra-text">
+      <p>Estas fotos son solo un pedacito de todo lo que hemos vivido juntos…<br>
+      Cada sonrisa tuya, cada abrazo, cada mirada todo me hace darme cuenta de lo afortunado que soy de tenerte.<br><br>
+      Eres mi persona favorita en el mundo entero ❤️ y estoy dispuesto a luchar por lo que sea con tal de estar a tu lado siempre<br>
+      Y no veo la hora de seguir creando más recuerdos a tu lado, mi amor por que cada recuerdo y momentos son eternos si tu estas en ellos.</p>
+    </div>
+
+    <p style="font-size:1rem; opacity:0.9; margin: 1.8rem 0 1.8rem 0;">
+      Feliz 14 de febrero, mi vida.<br>
+      Escucha esta canción que me hace pensar en ti... "Love so Fine" 💕<br>
+      Siempre tuyo, Axel
+    </p>
+
+    <!-- Botón "5 razones por las que te quiero tanto" -->
+    <a href="razones.html" class="reasons-btn">
+      ¿Quieres saber las 5 razones por las que te quiero tanto? 💕<br>Click aquí
+    </a>
+  </div>
+
+  <audio id="musica" loop preload="auto" playsinline>
+    <source src="love-so-fine.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio. 😔
+  </audio>
+
+  <button class="music-btn" id="btnMusica">♪ Reproducir nuestra canción ♪</button>
+
+  <!-- Ventana flotante romántica para activar música -->
+  <div id="musicPrompt" style="
+    position: fixed;
+    inset: 0;
+    background: rgba(42,0,74,0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    pointer-events: auto;
+  ">
+    <div id="musicPromptInner" style="
+      background: linear-gradient(135deg, #ff69b4, #c71585);
+      padding: 40px 30px;
+      border-radius: 30px;
+      text-align: center;
+      max-width: 92%;
+      box-shadow: 0 0 70px rgba(255,105,180,0.8);
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      transform: scale(0.8);
+      transition: all 0.9s ease;
+    ">
+      <p style="margin-bottom: 20px; line-height: 1.4;">
+        Antes de que leas esto...<br>
+        <span style="font-size: 1.7rem;">presiona aquí</span><br>
+        para reproducir la canción que siempre me recuerda a ti 💕
+      </p>
+      <button id="activateMusicBtn" style="
+        padding: 18px 55px;
+        font-size: 1.5rem;
+        background: white;
+        color: #ff1493;
+        border: none;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        transition: all 0.3s;
+      ">
+        ¡Toca para escuchar nuestra canción! ❤️
+      </button>
+      <p style="font-size: 1rem; margin-top: 20px; opacity: 0.9;">
+        (o cualquier parte de la pantalla si prefieres 💖)
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Corazones flotantes (optimizado para móvil: menos densidad)
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 10 + 14) + 's'; // más lento
+      heart.style.fontSize = (Math.random() * 16 + 18) + 'px';
+      document.getElementById('hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 25000);
+    }
+    setInterval(createHeart, 1200); // menos frecuencia para rendimiento
+
+    // Fotos apareciendo
+    const images = document.querySelectorAll('.gallery img');
+    images.forEach((img, index) => {
+      setTimeout(() => img.classList.add('visible'), 400 + index * 600);
+    });
+
+    // Confeti giratorio (menos partículas para móvil)
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const confetti = [];
+    const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#c71585', '#ffffff'];
+
+    class Confetti {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height - canvas.height;
+        this.size = Math.random() * 8 + 4;
+        this.speed = Math.random() * 2.5 + 1.5;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = Math.random() * 8 - 4;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.opacity = Math.random() * 0.5 + 0.5;
+      }
+
+      update() {
+        this.y += this.speed;
+        this.rotation += this.rotationSpeed;
+        if (this.y > canvas.height) {
+          this.y = -this.size;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    function initConfetti() {
+      for (let i = 0; i < 50; i++) { // menos partículas para móvil
+        confetti.push(new Confetti());
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateConfetti);
+    }
+
+    window.addEventListener('load', () => {
+      initConfetti();
+      animateConfetti();
+      setTimeout(() => {
+        confetti.length = 0;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, 6000); // 6 segundos en móvil para no saturar
+    });
+
+    // Control de música + ventana flotante
+    const audio = document.getElementById('musica');
+    const btn = document.getElementById('btnMusica');
+    const promptOverlay = document.getElementById('musicPrompt');
+    const promptInner = document.getElementById('musicPromptInner');
+    const activateBtn = document.getElementById('activateMusicBtn');
+
+    audio.volume = 0.4;
+
+    function playWithSound() {
+      audio.muted = false;
+      audio.play().then(() => {
+        btn.textContent = "♪ Pausar música ♪";
+        promptOverlay.style.opacity = '0';
+        setTimeout(() => promptOverlay.style.display = 'none', 1200);
+      }).catch(e => {
+        console.log("Error al reproducir:", e);
+        btn.textContent = "♪ Toca de nuevo si no suena 💕";
+      });
+    }
+
+    activateBtn.addEventListener('click', playWithSound);
+
+    promptOverlay.addEventListener('click', (e) => {
+      if (e.target !== activateBtn) playWithSound();
+    });
+
+    btn.addEventListener('click', () => {
+      if (audio.paused || audio.muted) {
+        audio.muted = false;
+        audio.play().catch(e => console.log("Error:", e));
+        btn.textContent = "♪ Pausar música ♪";
+        if (promptOverlay.style.display !== 'none') {
+          promptOverlay.style.opacity = '0';
+          setTimeout(() => promptOverlay.style.display = 'none', 1200);
+        }
+      } else {
+        audio.pause();
+        btn.textContent = "♪ Reproducir nuestra canción ♪";
+      }
+    });
+
+    window.addEventListener('load', () => {
+      promptOverlay.style.opacity = '1';
+      if (promptInner) promptInner.style.transform = 'scale(1)';
+    });
+  </script>
+
+</body>
+</html>

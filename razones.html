@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Las 5 razones por las que quiero una vida contigo ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a0033, #2a004a, #4b0082);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 3rem 1.2rem 10rem;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      color: #ff9ec1;
+      text-shadow: 0 0 25px #ff69b4;
+      margin: 0 0 3rem 0;
+      letter-spacing: 2px;
+    }
+
+    .reasons-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .reason-card {
+      background: url('https://www.transparenttextures.com/patterns/cream-paper.png') #fdfaf3;
+      background-blend-mode: multiply;
+      background-size: cover;
+      border: 1.5px solid rgba(255,105,180,0.4);
+      border-radius: 18px;
+      padding: 2rem 1.6rem;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.55),
+                  inset 0 0 20px rgba(255,182,193,0.15);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.7s ease-out;
+      color: #2a004a;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .reason-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reason-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 55px rgba(255,20,147,0.5);
+      border-color: #ff69b4;
+    }
+
+    .heart {
+      font-size: 2.8rem;
+      display: block;
+      margin: 1.2rem auto 0;
+      animation: latir 3s infinite ease-in-out;
+      text-align: center;
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    .signature {
+      margin-top: 4rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      color: #ffb6c1;
+      text-shadow: 0 0 20px #ff1493;
+    }
+
+    /* Botón de música flotante (más grande y táctil en móvil) */
+    .music-btn {
+      position: fixed;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255,105,180,0.6);
+      transition: all 0.3s ease;
+      z-index: 100;
+      min-width: 85%;
+      max-width: 360px;
+      font-weight: bold;
+      touch-action: manipulation;
+    }
+
+    .music-btn:hover,
+    .music-btn:active {
+      transform: translateX(-50%) translateY(-8px) scale(1.07);
+      box-shadow: 0 15px 40px rgba(255,20,147,0.8);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 3rem; margin-bottom: 2.5rem; }
+      .reason-card { 
+        font-size: 1.15rem; 
+        padding: 1.8rem 1.4rem; 
+        line-height: 1.6; 
+      }
+      .heart { font-size: 2.5rem; }
+      .signature { font-size: 2.8rem; margin-top: 3.5rem; }
+      .music-btn { font-size: 1.1rem; padding: 1rem 2.5rem; min-width: 90%; }
+      .container { padding: 2.5rem 1rem 10rem; }
+    }
+
+    @media (max-width: 380px) {
+      h1 { font-size: 2.6rem; }
+      .reason-card { font-size: 1.1rem; padding: 1.6rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Las 5 razones por las que quiero una vida junto a ti... y nunca me iría 💕</h1>
+
+    <ul class="reasons-list">
+      <li class="reason-card">
+        Razón 1: Porque cada día contigo es mejor que el anterior<br>
+        Me despierto feliz solo de saber que estás en mi vida duermo contento por que mañana estaras para mi. <span class="heart">❤️</span>
+      </li>
+      <li class="reason-card">
+        Razón 2: Tu sonrisa ilumina todo mi mundo, literalmente eres el brillo de mi camino.<br>
+        Cuando sonríes, siento que el sol sale solo para mí. <span class="heart">💖</span>
+      </li>
+      <li class="reason-card">
+        Razón 3: Me haces sentir el hombre más afortunado del planeta.<br>
+        Nadie me ha hecho sentir tan valorado y querido como tú lo sabes hacer. <span class="heart">🌹</span>
+      </li>
+      <li class="reason-card">
+        Razón 4: Contigo todo tiene sentido y quiero que sea para siempre de la mano de Dios Princesa.<br>
+        Cada plan, cada sueño, cada futuro lo imagino a tu lado mi señorita Keyla. <span class="heart">💍</span>
+      </li>
+      <li class="reason-card">
+        Razón 5: Porque te amo con todo mi corazón y eso nunca va a cambiar.<br>
+        Eres mi hogar, mi paz y mi todo. Siempre tu y yo juntos contra el mundo. <span class="heart">💞</span>
+      </li>
+    </ul>
+
+    <p class="signature">Siempre tuyo, Axel ❤️ por una vida juntos Corazón de Melón</p>
+  </div>
+
+  <!-- Botón de música flotante (optimizado para toque) -->
+  <button class="music-btn" id="btnMusica">♪ Continuar nuestra canción ♪</button>
+
+  <audio id="musica" loop preload="auto" playsinline>
+    <source src="love-so-fine.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio. 😔
+  </audio>
+
+  <script>
+    // Aparecer tarjetas secuencialmente (más rápido en móvil)
+    const cards = document.querySelectorAll('.reason-card');
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('visible');
+      }, 300 + index * 500);
+    });
+
+    // Control de música (optimizado para móvil)
+    const audio = document.getElementById('musica');
+    const btn = document.getElementById('btnMusica');
+
+    audio.volume = 0.4;
+
+    function tryResumeAudio() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          btn.textContent = "♪ Pausar música ♪";
+        }).catch(() => {
+          btn.textContent = "♪ Toca para continuar la canción 💕";
+        });
+      }
+    }
+
+    window.addEventListener('load', tryResumeAudio);
+
+    // Reanudar con toque (más confiable en móvil)
+    document.addEventListener('click', tryResumeAudio, { once: true });
+    document.addEventListener('touchstart', tryResumeAudio, { once: true });
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(() => {
+          btn.textContent = "♪ Pausar música ♪";
+        }).catch(e => console.log("Error:", e));
+      } else {
+        audio.pause();
+        btn.textContent = "♪ Reproducir nuestra canción ♪";
+      }
+    });
+  </script>
+
+</body>
+</html>
